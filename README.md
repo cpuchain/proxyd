@@ -4,7 +4,7 @@ Reverse proxy to socks5 or http proxy
 
 ## Install
 
-See [releases](releases/latest) or build your own binaries with `yarn docker` or `yarn build`.
+See [releases](https://github.com/cpuchain/proxyd/releases/latest) or build your own binaries with `yarn docker` or `yarn build`.
 
 ## Usage
 
