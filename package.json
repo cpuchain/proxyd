@@ -1,0 +1,54 @@
+{
+    "name": "proxyd",
+    "description": "Reverse proxy to socks5 or http proxy",
+    "version": "1.0.0",
+    "main": "lib/index.js",
+    "types": "lib/index.d.ts",
+    "scripts": {
+        "lint": "eslint ./src/**/*.ts",
+        "build:type": "tsc --declaration",
+        "build:dist": "webpack && pkg -d --no-native-build --no-signature --no-bytecode -c ./package.json ./lib/proxyd.js",
+        "build": "yarn build:type && yarn build:dist",
+        "build:docker": "docker build -t proxyd-build -f build.Dockerfile . && docker run -it -v ./lib:/app/lib proxyd-build",
+        "dev": "ts-node ./src/start.ts",
+        "start": "node ./lib/proxyd.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "license": "MIT",
+    "target": "node20",
+    "pkg": {
+        "scripts": "./lib/proxyd.js",
+        "targets": [
+            "node20-linux-x64",
+            "node20-macos-x64",
+            "node20-win-x64"
+        ],
+        "outputPath": "lib"
+    },
+    "devDependencies": {
+        "@types/dateformat": "^5.0.2",
+        "@types/node": "^20.14.9",
+        "@typescript-eslint/eslint-plugin": "^7.14.1",
+        "@typescript-eslint/parser": "^7.14.1",
+        "@yao-pkg/pkg": "^5.12.0",
+        "colors": "^1.4.0",
+        "commander": "^12.1.0",
+        "dateformat": "^5.0.3",
+        "esbuild-loader": "^4.2.0",
+        "eslint": "8.57.0",
+        "eslint-config-prettier": "^9.1.0",
+        "eslint-import-resolver-typescript": "^3.6.1",
+        "eslint-plugin-import": "^2.29.1",
+        "eslint-plugin-prettier": "^5.1.3",
+        "prettier": "^3.3.2",
+        "proxy-chain": "^2.5.1",
+        "ts-node": "^10.9.2",
+        "tsc": "^2.0.4",
+        "typescript": "^5.5.2",
+        "webpack": "^5.92.1",
+        "webpack-cli": "^5.1.4"
+    },
+    "resolutions": {
+        "strip-ansi": "6.0.1"
+    }
+}

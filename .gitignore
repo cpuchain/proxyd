@@ -1,0 +1,4 @@
+node_modules
+lib/proxyd-*
+lib/SHA256SUMS.txt
+lib/*.zip
